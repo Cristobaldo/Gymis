@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sistema de gestion de visitas de Gymi's</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Sistema de gestion de visitas de Gymi's</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+
+        </ul>
+    </div>
+</nav>
+
+<div class ="container">
+    <div class = "row">
+        <h1> Lista de Visitas </h1>
+    </div>
+
+    <div class = "row">
+        <div class = "col-lg-3">
+            <a th:href = "@{/visitas/new}" class = "btn btn-primary btn-sm mb-3"> Insertar visita</a>
+        </div>
+    </div>
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> Local</th>
+            <th> DNI</th>
+            <th> Fecha </th>
+            <th> Hora </th>
+            <th> Acciones </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each = "visita: ${visitas}">
+            <td th:text = "${visita.local}"></td>
+            <td th:text = "${visita.AffiliateDNI}"></td>
+            <td th:text = "${visita.date}"></td>
+            <td th:text = "${visita.time}"></td>
+            <td>
+                <a th:href = "@{/visitas/edit/{id}(id=${visita.id})}"
+                   class = "btn btn-primary">Actualizar</a>
+
+                <a th:href = "@{/visitas/{id}(id=${visita.id})}"
+                   class = "btn btn-danger">Eliminar</a>
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>
